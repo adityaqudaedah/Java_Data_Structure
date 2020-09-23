@@ -1,5 +1,7 @@
-package com.data.queue;
+package com.data.queue.linked_queue;
 
+
+import java.util.NoSuchElementException;
 
 public class Queue<E> implements Queues<E> {
     private Node front;
@@ -34,7 +36,7 @@ public class Queue<E> implements Queues<E> {
     @Override
     public int size() {
         if(isEmpty()){
-            return 0;
+            throw new NoSuchElementException();
         }
         int count = 1;
         Node tmp = front;
