@@ -1,15 +1,30 @@
 package com.data.queue.array_queueu;
 
 public class ArrayQueueImpl {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         ArrayQueue<Integer> q = new ArrayQueue<>();
         q.enqueu(3);
         q.enqueu(5);
         q.enqueu(7);
         q.enqueu(9);
         q.enqueu(11);
-        q.dequeue();
         q.enqueu(13);
+        q.enqueu(15);
+        q.enqueu(17);
+        q.enqueu(19);
+        q.enqueu(21);
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+        q.dequeue();
+//        System.out.println(q.isEmpty());
+//        System.out.println(q.peek());
         q.show();
+
     }
 }
