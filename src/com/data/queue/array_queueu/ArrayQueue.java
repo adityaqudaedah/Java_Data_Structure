@@ -1,11 +1,11 @@
 package com.data.queue.array_queueu;
 
-import com.data.queue.linked_queue.Queues;
+import com.data.queue.linked_queue.Queue;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class ArrayQueue<E> implements Queues<E> {
+public class ArrayQueue<E> implements Queue<E> {
 
    private  E[] data;
    private int front = -1;
@@ -14,9 +14,13 @@ public class ArrayQueue<E> implements Queues<E> {
 
    //constructor
     @SuppressWarnings("unchecked")
-   ArrayQueue(){
-       data = (E[]) new Object[SIZE];
+   ArrayQueue(int size){
+        data = (E[]) new Object[size];
    }
+   ArrayQueue(){
+        this(SIZE);
+   }
+
    //show method
     public void show(){
        //to show the queue display
@@ -76,7 +80,7 @@ public class ArrayQueue<E> implements Queues<E> {
             data[front] = item;
         }
         else if((rear+1) % data.length == front){
-            resize(2*SIZE);
+            resize(2*size());
             rear = (rear+1)% data.length;
             data[rear] = item;
         }
