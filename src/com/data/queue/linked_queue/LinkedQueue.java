@@ -61,6 +61,7 @@ public class LinkedQueue<E> implements Queue<E> {
         }
         System.out.print(temp.data);
     }
+
     //node class
     private class Node {
         private final E data;
