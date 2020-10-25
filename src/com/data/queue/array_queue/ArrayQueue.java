@@ -1,4 +1,4 @@
-package com.data.queue.array_queueu;
+package com.data.queue.array_queue;
 
 import com.data.queue.linked_queue.Queue;
 

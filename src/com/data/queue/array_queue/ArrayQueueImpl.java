@@ -1,4 +1,4 @@
-package com.data.queue.array_queueu;
+package com.data.queue.array_queue;
 
 public class ArrayQueueImpl {
     public static void main(String[] args) {
