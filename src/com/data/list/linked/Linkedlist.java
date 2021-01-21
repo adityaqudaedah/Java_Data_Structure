@@ -1,4 +1,4 @@
-package com.data.linked;
+package com.data.list.linked;
 
 //Linked list
 class Linkedlist{
@@ -15,6 +15,31 @@ class Linkedlist{
         Node(int item){
             this(item,null);
         }
+    }
+
+    //reverse linked list
+    public Node reverse(Node head){
+
+        Node prev = null;
+        Node curr = head;
+        Node nextNode = null;
+
+        while (curr != null) {
+            //next node become a node after current value
+            nextNode = curr.next;
+
+            //the current node will point to previous node
+            //on this phase the actual reverse happens
+            curr.next = prev;
+
+            //move our previous node current node which curr
+            prev = curr;
+
+            //move our current node to next node which is nextNode
+            curr = nextNode;
+        }
+
+        return prev;
     }
     //Insert method
     public void insert(int item){
@@ -77,39 +102,50 @@ class Linkedlist{
     public void show(){
         Node temp = head;
         while (temp.next!=null){
-            System.out.println(temp.data);
+            System.out.print(temp.data+"->");
             temp = temp.next;
         }
-        System.out.println(temp.data);
+        System.out.print(temp.data+"->"+temp.next);
 
     }
-    //Show1 method
-    public static void show(Node list){
-        Node p = list;
+    //Overloading show method
+    public static void show(Node head){
+        Node p = head;
         while(p.next!=null){
-            System.out.println(p.data);
+            System.out.print(p.data+"->");
             p = p.next;
         }
-        System.out.println(p.data);
+        System.out.print(p.data+"->"+p.next);
     }
     //main method
     public static void main(String[] args) {
-//        Linkedlist list = new Linkedlist();
+
+        Linkedlist list = new Linkedlist();
+        list.head = new Node(1);
+        list.head.next = new Node (2);
+        list.head.next.next = new Node(3);
+
+        head = list.reverse(head);
+
+        list.show(head);
+
 
         //using second constructor
-        Node head = new Node(2,null);
-        head  = new Node(4,head);
-        head = new Node(6, head);
-        show(head);
+//        Node head = new Node(2,null);
+//        head  = new Node(4,head);
+//        head = new Node(6, head);
+//        show(head);
 
 //        list.insert(3);
 //        list.insert(5);
 //        list.insert(7);
 //        list.insert(9);
+
 //        list.insertAtTheStart(1);
 //        list.insertAt(4,8);
 //        list.deleteAt(5);
 //        System.out.println("list updated : ");
 //        list.show();
+
     }
 }
