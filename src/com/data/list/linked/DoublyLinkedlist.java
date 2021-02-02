@@ -78,7 +78,7 @@ public class DoublyLinkedlist<E> {
         Node node = new Node(data);
 
 
-        if (index < 0 || index > size-1) {
+        if (index < 0 || index > size - 1) {
             throw new ArrayIndexOutOfBoundsException();
         } else if (index == 0) {
             addAtFront(data);
@@ -105,10 +105,10 @@ public class DoublyLinkedlist<E> {
         }
         head = curr;
         while (head.prev != null) {
-            System.out.println(head.data);
+            System.out.print(head.data +", ");
             head = head.prev;
         }
-        System.out.println(head.data);
+        System.out.print(head.data);
     }
 
     //another reverse method
@@ -129,19 +129,42 @@ public class DoublyLinkedlist<E> {
 
     }
 
+    //delete or remove at index method
+    public E removeAt(int index) {
+        Node curr = (Node) getNode(index);
+        Node prev = (Node) getNode(index - 1);
+        Node next = (Node) getNode(index + 1);
+        E result = (E) curr.data;
+
+        if (index < 0 || index > size - 1) {
+            throw new ArrayIndexOutOfBoundsException("you attempted to delete at " +
+                    index +
+                    " indexes");
+        } else if (index == 0) {
+            return deleteAtHead();
+        }else {
+            prev.next = curr.next;
+
+            if (next!= null) next.prev = prev;
+            --size;
+        }
+        return result;
+    }
+
     //delete at index method
     public E deleteAt(int index) {
 
         Node curr = (Node) getNode(index);
         E result = (E) curr.data;
 
-        if (index < 0 || index > size-1) {
+
+        if (index < 0 || index > size - 1) {
             throw new ArrayIndexOutOfBoundsException("you attempted to delete at " +
                     index +
                     " indexes");
-        }else if(index == 0) {
+        } else if (index == 0) {
             return deleteAtHead();
-        }else{
+        } else {
             //changes the next pointer of previous nodes to the next nodes of current node
             curr.prev.next = curr.next;
             //if next node of the current are not null,
@@ -153,7 +176,7 @@ public class DoublyLinkedlist<E> {
     }
 
     //delete at head mehtod
-    public E deleteAtHead(){
+    public E deleteAtHead() {
 
         Node curr = head;
         curr.next.prev = curr.prev;
@@ -166,7 +189,7 @@ public class DoublyLinkedlist<E> {
 
         Node curr = head;
 
-        for (int i = 0; i < index ; ++i) {
+        for (int i = 0; i < index; ++i) {
             curr = curr.next;
         }
         return (E) curr;
@@ -178,15 +201,21 @@ public class DoublyLinkedlist<E> {
         list.add(1);
         list.add(2);
         list.add(3);
-        System.out.println(list.deleteAt(2));
+        list.addAtFront(0);
+        list.add(4);
+        list.addAt(1,10);
+        list.addAt(2,9);
 
-//        list.anotherReverse();
-//        list.addAtFront(0);
-//        list.add(4);
-//        list.addAt(1,10);
-//        list.addAt(2,9);
+        list.deleteAt(1);
+        list.removeAt(1);
 
-//        System.out.println("\n"+list.size);
+        list.show();
+        System.out.println();
+        list.reverse();
+        System.out.println();
+        list.anotherReverse();
+
+        System.out.println("\n"+list.size);
 
 
     }
