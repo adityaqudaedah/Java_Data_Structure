@@ -178,7 +178,7 @@ public class DoublyLinkedlist<E> {
         list.add(1);
         list.add(2);
         list.add(3);
-        System.out.println(list.deleteAt(3));
+        System.out.println(list.deleteAt(2));
 
 //        list.anotherReverse();
 //        list.addAtFront(0);
