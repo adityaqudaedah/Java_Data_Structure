@@ -1,4 +1,4 @@
-package com.data.list;
+package com.data.list.array;
 
 import java.util.Arrays;
 

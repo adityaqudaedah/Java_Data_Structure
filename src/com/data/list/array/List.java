@@ -1,4 +1,4 @@
-package com.data.list;
+package com.data.list.array;
 
 public interface List <E> {
     void add (E item);

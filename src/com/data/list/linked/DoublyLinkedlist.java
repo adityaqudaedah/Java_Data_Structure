@@ -1,5 +1,8 @@
 package com.data.list.linked;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class DoublyLinkedlist<E> {
 
     static Node head;
@@ -175,7 +178,7 @@ public class DoublyLinkedlist<E> {
         return result;
     }
 
-    //delete at head mehtod
+    //delete at head method
     public E deleteAtHead() {
 
         Node curr = head;
@@ -195,28 +198,63 @@ public class DoublyLinkedlist<E> {
         return (E) curr;
     }
 
+    //iterator method
+    public Iterator iterator(){
+        return new listIterator();
+    }
+
+    private class listIterator implements Iterator<E>{
+        private Node current;
+
+        //constructor
+        listIterator(){
+            this. current = head;
+        }
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext())throw new NoSuchElementException();
+            E result = (E) current.data;
+            current = current.next;
+            return result;
+        }
+    }
+
+
     //main function
     public static void main(String[] args) {
-        DoublyLinkedlist list = new DoublyLinkedlist();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.addAtFront(0);
-        list.add(4);
-        list.addAt(1,10);
-        list.addAt(2,9);
+       DoublyLinkedlist list = new DoublyLinkedlist();
 
-        list.deleteAt(1);
-        list.removeAt(1);
+       list.add(1);
+       list.add(2);
+       list.add(3);
 
-        list.show();
-        System.out.println();
-        list.reverse();
-        System.out.println();
-        list.anotherReverse();
+       Iterator i = list.iterator();
 
-        System.out.println("\n"+list.size);
+       //print list using iterator
+        while (i.hasNext()) {
+            System.out.println(i.next());
+        }
 
+//        list.addAtFront(0);
+//        list.add(4);
+//        list.addAt(1,10);
+//        list.addAt(2,9);
+//
+//        list.deleteAt(1);
+//        list.removeAt(1);
+//
+//        list.show();
+//        System.out.println();
+//        list.reverse();
+//        System.out.println();
+//        list.anotherReverse();
+//
+//        System.out.println("\n"+list.size);
 
     }
 

@@ -1,5 +1,8 @@
 package com.data.list;
 
+import com.data.list.array.ArrayList;
+import com.data.list.array.List;
+
 public class Run {
     public static void main(String[] args){
 //        List arr = new ArrayList();
@@ -15,7 +18,7 @@ public class Run {
 //        System.out.println(arr.isEmpty());
 
 
-        List <Integer> arr = new ArrayList<>();
+        List<Integer> arr = new ArrayList<>();
         arr.add(1);
         System.out.println(arr.get(0));
     }
